@@ -1,0 +1,43 @@
+{% extends 'layout/base_app.html' %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}
+{{form.media.css}}
+{% endblock extra_css %}
+
+{% block content %}
+<div class="card">
+    <form method="post" hx-boost="true" class="form" id="default_school_form">
+        <div class="card-body">
+            <div class="form-group">
+                {% csrf_token %}
+                {{form|crispy}}
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div class="card mt-3">
+    <!-- <form method="post" hx-boost="true" class="form"> -->
+        <div class="card-body">
+            <div class="form-group">
+                {% csrf_token %}
+                
+                {% crispy school_info_form school_info_form.helper %}
+                <!-- {{school_info_form|crispy }} -->
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+        </div>
+    <!-- </form> -->
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{form.media.js}}
+{% endblock extra_js %}

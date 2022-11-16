@@ -1,0 +1,1 @@
+$("#default_school_form").submit();
