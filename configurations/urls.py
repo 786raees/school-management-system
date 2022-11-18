@@ -4,5 +4,6 @@ from . import views as config_views
 app_name = "confurations"
 
 urlpatterns = [
-    path("", config_views.home, name="config_views")
+    path("", config_views.default_school_view, name="default_school_view"),
+    path("update_school_info/", config_views.update_school_info, name="update_school_info")
 ]

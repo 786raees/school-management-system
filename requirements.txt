@@ -17,3 +17,5 @@ sqlparse==0.4.3
 tzdata==2022.6
 Werkzeug==2.2.2
 wrapt==1.14.1
+celery==4.4.1
+psycopg2==2.9.3
