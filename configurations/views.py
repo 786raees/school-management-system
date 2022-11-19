@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
+from .table import SchoolInfoTable
+
 from .forms import SelectSchoolForm, SchoolInfoForm
-# Create your views here.
+from .models import SchoolInfo
+
 
 def default_school_view(request):
     form = SelectSchoolForm(request.POST or None, instance=request.user.selectedschool)
@@ -10,8 +13,8 @@ def default_school_view(request):
         return redirect("confurations:default_school_view")
         
     context = {
-               'app_name': 'configurations',
-               'page_name': 'select_default_school',
+               'app_name': 'Configurations',
+               'page_name': 'Select Default School',
                'form': form,
                'school_info_form': school_info_form,
                }
@@ -27,11 +30,22 @@ def update_school_info(request):
         return redirect("confurations:default_school_view")
 
     context = {
-               'app_name': 'configurations',
-               'page_name': 'select_default_school',
+               'app_name': 'Configurations',
+               'page_name': 'Select Default School',
                'form': form,
                'school_info_form': school_info_form,
                }
     
     return render(request, 'pages/configuration/school_info.html', context)
+
+def add_delete_school_view(request):
+    object_list = SchoolInfo.objects.all()
+    object_list = SchoolInfoTable(object_list)
+    template_name: str = 'pages/configuration/school_list.html'
+    context = {
+        'object_list': object_list,
+        'app_name': 'Configurations',
+        'page_name': 'Add Delete School',
+        }
+    return render(request, template_name, context)
 

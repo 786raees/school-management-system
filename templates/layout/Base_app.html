@@ -144,15 +144,15 @@
                         <!--begin::Menu Nav-->
                         <ul class="menu-nav " hx-boost="true" >
                             
-                            <li class="menu-item {% if app_name == 'configurations' %}menu-item-submenu menu-item-open menu-item-here{% endif %}" aria-haspopup="true"
+                            <li class="menu-item {% if app_name == 'Configurations' %}menu-item-submenu menu-item-open menu-item-here{% endif %}" aria-haspopup="true"
                                 data-menu-toggle="hover"><a href="javascript:;" class="menu-link menu-toggle"><i
                                         class="menu-icon flaticon-cogwheel-1"></i><span
                                         class="menu-text">Configuration</span><i class="menu-arrow"></i></a>
                                 <div class="menu-submenu "><i class="menu-arrow"></i>
                                     <ul class="menu-subnav">
-                                        
                                         {% include 'snippets/menu_item_parent.html' with menu_text="Configuration" %}
-                                        {% include 'snippets/menu_item.html' with menu_text="Default School" url="confurations:default_school_view" page="select_default_school" %}
+                                        {% include 'snippets/menu_item.html' with menu_text="Default School" url="confurations:default_school_view" page="Select Default School" %}
+                                        {% include 'snippets/menu_item.html' with menu_text="Add | Delete School" url="confurations:add_delete_school_view" page="Add Delete School" %}
                                         <li class="menu-item " aria-haspopup="true"><a
                                                 href="layout/general/minimized-aside.html" class="menu-link "><i
                                                     class="menu-bullet menu-bullet-dot"><span></span></i><span
@@ -3683,8 +3683,7 @@
                                 <!--begin::Page Heading-->
                                 <div class="d-flex align-items-baseline flex-wrap mr-5">
                                     <!--begin::Page Title-->
-                                    <h5 class="text-dark font-weight-bold my-1 mr-5">
-                                        Empty Page </h5>
+                                    <h5 class="text-dark font-weight-bold my-1 mr-5">{% block page_name %}{{page_name}}{% endblock page_name %}</h5>
                                     <!--end::Page Title-->
 
                                     <!--begin::Breadcrumb-->
@@ -3692,11 +3691,11 @@
                                         class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                                         <li class="breadcrumb-item">
                                             <a href="" class="text-muted">
-                                                General </a>
+                                                {% block app_name %}{{app_name}}{% endblock app_name %}
+                                            </a>
                                         </li>
                                         <li class="breadcrumb-item">
-                                            <a href="" class="text-muted">
-                                                Empty Page </a>
+                                            <a href="" class="text-muted">{% block page_name_link %}{{page_name}}{% endblock page_name_link %}</a>
                                         </li>
                                     </ul>
                                     <!--end::Breadcrumb-->

@@ -1,0 +1,10 @@
+{% extends 'layout/base_app.html' %}
+{% load crispy_forms_tags static %}
+{% load render_table from django_tables2 %}
+
+{% block title %}Default School Configuration{% endblock title %}
+{% block page_name %}{{page_name}}{% endblock page_name %}
+
+{% block content %}
+{% render_table object_list %}
+{% endblock content %}

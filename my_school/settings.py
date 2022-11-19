@@ -28,12 +28,13 @@ DJANGO_INSTALLED_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-    'django_select2',
-    'django_extensions',
-    'django_htmx',
-    'crispy_forms',
-
+    'django_select2', # https://django-select2.readthedocs.io/en/latest/
+    'django_extensions', # https://django-extensions.readthedocs.io/en/latest/
+    'django_htmx', # https://django-htmx.readthedocs.io/en/latest/
+    'crispy_forms', #  https://django-crispy-forms.readthedocs.io/en/latest/install.html
+    'django_tables2', # https://django-tables2.readthedocs.io/en/latest/
 ]
+
 USER_INSTALLED_APPS = [
     'configurations.apps.ConfigurationsConfig',
     'users.apps.UsersConfig'
