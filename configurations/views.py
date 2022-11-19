@@ -51,7 +51,7 @@ def school_list_view(request):
 
 def delete_school_view(request, id):
     school = SchoolInfo.objects.get(id=id)
-    # TODO: uncomment if completed
+    # TODO: uncomment if done
     # school.delete()
     messages.success(request, f'"{school.school_name}" and data linked with it has been deleted successfully')
     return redirect("confurations:school_list_view")
