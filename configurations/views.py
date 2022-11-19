@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .table import SchoolInfoTable
-
 from .forms import SelectSchoolForm, SchoolInfoForm
 from .models import SchoolInfo
 
@@ -38,14 +38,20 @@ def update_school_info(request):
     
     return render(request, 'pages/configuration/school_info.html', context)
 
-def add_delete_school_view(request):
+def school_list_view(request):
     object_list = SchoolInfo.objects.all()
     object_list = SchoolInfoTable(object_list)
     template_name: str = 'pages/configuration/school_list.html'
     context = {
         'object_list': object_list,
         'app_name': 'Configurations',
-        'page_name': 'Add Delete School',
+        'page_name': 'Add | Delete School',
         }
     return render(request, template_name, context)
 
+def delete_school_view(request, id):
+    school = SchoolInfo.objects.get(id=id)
+    # TODO: uncomment if completed
+    # school.delete()
+    messages.success(request, f'"{school.school_name}" and data linked with it has been deleted successfully')
+    return redirect("confurations:school_list_view")
