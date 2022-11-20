@@ -5488,11 +5488,15 @@
     <!--begin::Page Scripts(used by this page)-->
     <script src="{% static 'assets/js/pages/widgets.js' %}"></script>
     <!--end::Page Scripts-->
-    
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+
     {% block extra_js %}
         
     {% endblock extra_js %}
     {% endblock js %}
+{% load sweetify %}
+{% sweetify %}
+
 </body>
 <!--end::Body-->
 

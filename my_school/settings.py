@@ -33,6 +33,10 @@ THIRD_PARTY_APPS = [
     'django_htmx', # https://django-htmx.readthedocs.io/en/latest/
     'crispy_forms', #  https://django-crispy-forms.readthedocs.io/en/latest/install.html
     'django_tables2', # https://django-tables2.readthedocs.io/en/latest/
+    'sweetify', # https://github.com/Atrox/sweetify-django
+    'slippers', # https://mitchel.me/slippers/docs/introduction/
+
+
 ]
 
 USER_INSTALLED_APPS = [
@@ -70,6 +74,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            "builtins": ["slippers.templatetags.slippers"],
+
         },
     },
 ]
@@ -158,3 +164,6 @@ CACHES = {
 
 # Tell select2 which cache configuration to use:
 SELECT2_CACHE_BACKEND = 'select2'
+
+# possible options: 'sweetalert', 'sweetalert2' - default is 'sweetalert2'
+SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
