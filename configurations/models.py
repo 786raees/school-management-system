@@ -29,7 +29,7 @@ class SchoolInfo(models.Model):
 class SelectedSchool(models.Model):
     user = models.OneToOneField(User, verbose_name=_("User"), on_delete=models.CASCADE)
     school = models.OneToOneField(SchoolInfo, verbose_name=_("Selected School"), on_delete=models.CASCADE,
-                                  help_text="<p class='ml-2'><small>Select Your Current School That You Want To Work On.</small></p>")
+                                  help_text="<p class='ml-2'><small>Select Your Current School That You Want To Work On.</small></p>", null=True)
     def __str__(self):
         return f"{self.user} | {self.school}"
 

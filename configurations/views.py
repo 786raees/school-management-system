@@ -1,3 +1,4 @@
+import contextlib
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import get_user_model
@@ -11,6 +12,13 @@ from .models import SchoolInfo, SelectedSchool
 User = get_user_model()
 
 def default_school_view(request):
+    try:
+        request.user.selectedschool
+    except SelectedSchool.DoesNotExist:
+        sweetify.warning(request, 'Please Add A School', text="Please add a school so you can continue!", persistent='I understand')
+        messages.warning(request, "Please add a school so you can continue!")
+
+        return redirect("confurations:school_list_view")
     form = SelectSchoolForm(request.POST or None, instance=request.user.selectedschool)
     school_info_form = SchoolInfoForm(instance=request.user.selectedschool.school)
     if form.is_valid():
@@ -49,7 +57,7 @@ def school_list_view(request):
         obj = form.save(commit=False)
         obj.user = request.user
         obj.save()
-        selectedschool = SelectedSchool.objects.get(user=request.user)
+        selectedschool, created = SelectedSchool.objects.get_or_create(user=request.user)
         selectedschool.school = obj
         selectedschool.save()
         sweetify.success(request, 'School Added', text=f'"{obj.school_name}" Schhol has been added successfully')
@@ -70,10 +78,11 @@ def school_list_view(request):
 def delete_school_view(request, id):
     try:
         school = SchoolInfo.objects.get(id=id, user=request.user)
-        if school == request.user.selectedschool.school:
-            sweetify.info(request, 'School Is Selected As Your Default School', text="Please Select An Other School From Here", persistent='I understand')
-            messages.info(request, "Please Select An Other School From Here")
-            return redirect("confurations:default_school_view")
+        with contextlib.suppress(Exception):
+            if school == request.user.selectedschool.school:
+                sweetify.info(request, 'School Is Selected As Your Default School', text="Please Select An Other School From Here", persistent='I understand')
+                messages.info(request, "Please Select An Other School From Here")
+                return redirect("confurations:default_school_view")
 
         school.delete()
         sweetify.success(request, 'School Deleted', text=f'"{school.school_name}" and data linked with it has been deleted successfully')
