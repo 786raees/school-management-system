@@ -92,4 +92,3 @@ def delete_school_view(request, id):
         messages.warning(request, "Please mind your own business!")
 
     return redirect("confurations:school_list_view")
-
