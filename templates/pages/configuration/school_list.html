@@ -1,11 +1,13 @@
 {% extends 'layout/base_app.html' %} 
-{% load crispy_forms_tags static %}
+{% load crispy_forms_tags static compress %}
 {% load render_table from django_tables2 %} 
 {% block title %}Default School Configuration{% endblock title %} 
 {% block page_name %}{{page_name}}{% endblock page_name %}
 
 {% block extra_css %}
+{% compress css %}
 {{form.media.css}}
+{% endcompress %}
 {% endblock extra_css %}
 
 
@@ -121,5 +123,7 @@
 </div>
 {% endblock content %} 
 {% block extra_js %}
+{% compress js %}
 {{form.media.js}}
+{% endcompress %}
 {% endblock extra_js %}

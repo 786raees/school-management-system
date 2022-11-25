@@ -1,2 +1,3 @@
 components:
     model: "components/models.html"
+    menu_item_wrap: "components/SideBar/menu_item_wrap.html"

@@ -1,0 +1,15 @@
+<li
+  class="menu-item {% if page_name == page %}menu-item-active{% endif %}"
+  aria-haspopup="true"
+>
+  <a href="{% url menu_link %}" class="menu-link">
+    {% if menu_icon %} {{menu_icon}} {% else %}
+    <i class="menu-bullet menu-bullet-dot">
+      <span></span>
+    </i>
+    {% endif %}
+    <span class="menu-text">{{menu_text}}</span></a
+  >
+</li>
+
+

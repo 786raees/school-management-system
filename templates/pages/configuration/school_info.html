@@ -1,8 +1,11 @@
 {% extends 'layout/base_app.html' %}
-{% load crispy_forms_tags static %}
+{% load crispy_forms_tags static compress %}
 {% block title %}Default School Configuration{% endblock title %}
 {% block extra_css %}
+{% compress css %}
 {{form.media.css}}
+{% endcompress %}
+
 {% endblock extra_css %}
 
 {% block content %}
@@ -36,5 +39,7 @@
 {% endblock content %}
 
 {% block extra_js %}
+{% compress js %}
 {{form.media.js}}
+{% endcompress %}
 {% endblock extra_js %}

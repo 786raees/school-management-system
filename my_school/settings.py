@@ -11,9 +11,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-43h6y40*trrqh)!+(rrq*&*-ql0uw57@%nxw6a*$n0#yuc5_j*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
+# DEBUG = False
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,7 +43,9 @@ THIRD_PARTY_APPS = [
 
 USER_INSTALLED_APPS = [
     'configurations.apps.ConfigurationsConfig',
-    'users.apps.UsersConfig'
+    'users.apps.UsersConfig',
+
+    "compressor", # https://django-compressor.readthedocs.io/en/stable/quickstart.html
 ]
 
 INSTALLED_APPS = DJANGO_INSTALLED_APPS + THIRD_PARTY_APPS + USER_INSTALLED_APPS
@@ -57,7 +61,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_htmx.middleware.HtmxMiddleware',
-
 ]
 
 ROOT_URLCONF = 'my_school.urls'
@@ -134,6 +137,7 @@ STATIC_ROOT = BASE_DIR/'assets'
 MEDIA_ROOT = BASE_DIR/'media'
 
 STATICFILES_DIRS = [
+    # BASE_DIR / 'assets',
     BASE_DIR / 'static',
 ]
 
@@ -167,3 +171,12 @@ SELECT2_CACHE_BACKEND = 'select2'
 
 # possible options: 'sweetalert', 'sweetalert2' - default is 'sweetalert2'
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
+
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ENABLED = True

@@ -1,0 +1,10 @@
+{% comment %} 
+Usage: {% include 'components/SideBar/menu_item.html' with menu_text="Add | Delete School" menu_link="confurations:school_list_view" menu_icon='<i class="menu-icon flaticon-home"></i>' page="Add | Delete School" %}
+{% endcomment %}
+
+<li class="menu-item {% if page_name == page %}menu-item-active{% endif %}" aria-haspopup="true">
+    <a href="{% url menu_link %}" class="menu-link">
+      {{menu_icon}}
+      <span class="menu-text">{{menu_text}}</span>
+    </a>
+  </li>
