@@ -37,6 +37,13 @@ THIRD_PARTY_APPS = [
     'django_tables2', # https://django-tables2.readthedocs.io/en/latest/
     'sweetify', # https://github.com/Atrox/sweetify-django
     'slippers', # https://mitchel.me/slippers/docs/introduction/
+    'debug_toolbar',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'import_export',
+    'croppie',
+    'django_filters',
 
 
 ]
@@ -46,11 +53,32 @@ USER_INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'academics.apps.AcademicsConfig',
     "compressor", # https://django-compressor.readthedocs.io/en/stable/quickstart.html
+    'django_cleanup.apps.CleanupConfig',  # should go after your apps
+
 ]
 
 INSTALLED_APPS = DJANGO_INSTALLED_APPS + THIRD_PARTY_APPS + USER_INSTALLED_APPS
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+SITE_ID = 1
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_VERIFICATION = 'optional' # it can "mandatory" or "none"
+# ACCOUNT_EMAIL_REQUIRED = True
+LOGIN_REDIRECT_URL = 'confurations:default_school_view'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# ACCOUNT_FORMS = {
+#             'signup': 'accounts.forms.SuperAdminUserCreationForm'
+# }
+
+
+LOGIN_URL = 'admin:login'
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,6 +89,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_htmx.middleware.HtmxMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+
 ]
 
 ROOT_URLCONF = 'my_school.urls'
