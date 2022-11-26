@@ -1,8 +1,6 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
 
-User = get_user_model()
 
 class SchoolInfo(models.Model):
 
@@ -16,7 +14,7 @@ class SchoolInfo(models.Model):
     # Session
     Session_Choices = [(f'20{year}-{year+1}',f'20{year}-{year+1}') for year in range(10,31) ]
     session = models.CharField(_("Session "), max_length=10, choices=Session_Choices, null=True)
-    user = models.ForeignKey(User, verbose_name=_("User"), on_delete=models.CASCADE)
+    user = models.ForeignKey('users.SuperAdmin', verbose_name=_("User"), on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = _("school info")
@@ -27,8 +25,8 @@ class SchoolInfo(models.Model):
 
 
 class SelectedSchool(models.Model):
-    user = models.OneToOneField(User, verbose_name=_("User"), on_delete=models.CASCADE)
-    school = models.OneToOneField(SchoolInfo, verbose_name=_("Selected School"), on_delete=models.CASCADE,
+    user = models.OneToOneField('users.SuperAdmin', verbose_name=_("User"), on_delete=models.CASCADE)
+    school = models.OneToOneField('SchoolInfo', verbose_name=_("Selected School"), on_delete=models.CASCADE,
                                   help_text="<p class='ml-2'><small>Select Your Current School That You Want To Work On.</small></p>", null=True)
     def __str__(self):
         return f"{self.user} | {self.school}"
