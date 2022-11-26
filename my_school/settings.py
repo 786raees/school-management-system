@@ -44,7 +44,7 @@ THIRD_PARTY_APPS = [
 USER_INSTALLED_APPS = [
     'configurations.apps.ConfigurationsConfig',
     'users.apps.UsersConfig',
-
+    'academics.apps.AcademicsConfig',
     "compressor", # https://django-compressor.readthedocs.io/en/stable/quickstart.html
 ]
 

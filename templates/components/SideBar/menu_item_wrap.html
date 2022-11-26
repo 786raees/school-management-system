@@ -6,9 +6,12 @@ Usage:-
 {% endcomment %}
 
 <li class="menu-item {% if app_name == wrapper_app %}menu-item-submenu menu-item-open menu-item-here{% endif %}" aria-haspopup="true"
-    data-menu-toggle="hover"><a href="javascript:;" class="menu-link menu-toggle"><i
-    class="menu-icon flaticon-cogwheel-1"></i><span
-    class="menu-text">{{wrapper_app}}</span><i class="menu-arrow"></i></a>
+    data-menu-toggle="hover">
+    <a href="javascript:;" class="menu-link menu-toggle">
+        {{menu_icon}}
+        <span class="menu-text">{{wrapper_app}}</span>
+        <i class="menu-arrow"></i>
+    </a>
     <div class="menu-submenu "><i class="menu-arrow"></i>
         <ul class="menu-subnav">
             {% include 'components/SideBar/menu_item_parent.html' %}
