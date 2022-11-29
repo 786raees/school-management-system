@@ -44,14 +44,14 @@ THIRD_PARTY_APPS = [
     'import_export',
     'croppie',
     'django_filters',
-
-
 ]
 
 USER_INSTALLED_APPS = [
     'configurations.apps.ConfigurationsConfig',
     'users.apps.UsersConfig',
     'academics.apps.AcademicsConfig',
+
+
     "compressor", # https://django-compressor.readthedocs.io/en/stable/quickstart.html
     'django_cleanup.apps.CleanupConfig',  # should go after your apps
 

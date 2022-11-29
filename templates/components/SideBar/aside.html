@@ -42,10 +42,10 @@
                         <!--begin::Menu Nav-->
                         <ul class="menu-nav " hx-boost="true" >
                             {% #menu_item_wrap app_name=app_name wrapper_app='Academics' menu_icon='<i class="menu-icon fas fa-book-reader"></i>' %}
-                            {% include 'components/SideBar/menu_item_child.html' with menu_text="Section" menu_link="confurations:default_school_view" page="Section" %}
-                            {% include 'components/SideBar/menu_item_child.html' with menu_text="Class" menu_link="confurations:school_list_view" page="Class" %}
-                            {% include 'components/SideBar/menu_item_child.html' with menu_text="Subject" menu_link="confurations:school_list_view" page="Subject" %}
-                            {% include 'components/SideBar/menu_item_child.html' with menu_text="Subject Group" menu_link="confurations:school_list_view" page="Subject Group" %}
+                            {% include 'components/SideBar/menu_item_child.html' with menu_text="Sections" menu_link="academics:create_section" page="Sections" %}
+                            {% comment %} {% include 'components/SideBar/menu_item_child.html' with menu_text="Class" menu_link="academics:school_list_view" page="Class" %}
+                            {% include 'components/SideBar/menu_item_child.html' with menu_text="Subject" menu_link="academics:school_list_view" page="Subject" %}
+                            {% include 'components/SideBar/menu_item_child.html' with menu_text="Subject Group" menu_link="academics:school_list_view" page="Subject Group" %} {% endcomment %}
                             {% /menu_item_wrap %}
                             {% #menu_item_wrap app_name=app_name wrapper_app='Configurations' menu_icon='<i class="menu-icon flaticon-cogwheel-1"></i>' %}
                             {% include 'components/SideBar/menu_item_child.html' with menu_text="Default School" menu_link="confurations:default_school_view" page="Select Default School" %}
