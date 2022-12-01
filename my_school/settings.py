@@ -37,7 +37,7 @@ THIRD_PARTY_APPS = [
     'django_tables2', # https://django-tables2.readthedocs.io/en/latest/
     'sweetify', # https://github.com/Atrox/sweetify-django
     'slippers', # https://mitchel.me/slippers/docs/introduction/
-    'debug_toolbar', # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html
+    'debug_toolbar',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -78,9 +78,6 @@ AUTHENTICATION_BACKENDS = [
 
 LOGIN_URL = 'account_login'
 
-# INTERNAL_IPS = [
-#     "127.0.0.1",
-# ]
 
 
 MIDDLEWARE = [
@@ -182,25 +179,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # Cached values for backwards compatibility
-# CACHES = {
-#     'default': {
-#         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': 'redis://127.0.0.1:6379/1',
-#         'OPTIONS': {
-#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#         }
-#     },
-#     'select2': {
-#         'BACKEND': 'django_redis.cache.RedisCache',
-#         'LOCATION': 'redis://127.0.0.1:6379/2',
-#         'OPTIONS': {
-#             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
-#         }
-#     }
-# }
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    },
+    'select2': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/2',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
 
-# # Tell select2 which cache configuration to use:
-# SELECT2_CACHE_BACKEND = 'select2'
+# Tell select2 which cache configuration to use:
+SELECT2_CACHE_BACKEND = 'select2'
 
 # possible options: 'sweetalert', 'sweetalert2' - default is 'sweetalert2'
 SWEETIFY_SWEETALERT_LIBRARY = 'sweetalert2'
