@@ -1,0 +1,28 @@
+{% extends 'layout/base_app.html' %}
+{% load crispy_forms_tags %}
+{% load render_table from django_tables2 %}
+{% block page_name %}{{page_name}}{% endblock page_name %}
+{% block content %}
+<div class="row">
+    <div class="col-6">
+        {% #card card_label="Add | Update " muted_sub_text="Modify All the Classes of Your School" %}
+        <form method="post" hx-boost="true" novalidate>
+            {% csrf_token %}
+            <div class="card-body">
+                {{form|crispy }}
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+            </div>
+        </form>
+        {% /card %}
+    </div>
+    <div class="col-6">
+        {% #card card_label="Classes List" muted_sub_text="A List of All the Classes of Your School" %}
+        <div class="card-body">
+            {% render_table object_list %}
+        </div>
+        {% /card %}
+    </div>
+</div>
+{% endblock content %}
