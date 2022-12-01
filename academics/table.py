@@ -3,7 +3,7 @@ from django.utils.html import format_html
 from django.urls import reverse
 from .models import Section
 
-class ActionColumn(table.Column):
+class SectionActionColumn(table.Column):
     def render(self, record):
         delete_section_url = reverse('academics:delete_section', kwargs={'pk': record.id})
         update_section_url = reverse('academics:update_section', kwargs={'pk': record.id})
@@ -18,7 +18,7 @@ class ActionColumn(table.Column):
 
 
 class SectionTable(table.Table):
-    actions = ActionColumn(empty_values=())
+    actions = SectionActionColumn(empty_values=())
     class Meta:
         model = Section
         template_name = "django_tables2/bootstrap-responsive.html"
