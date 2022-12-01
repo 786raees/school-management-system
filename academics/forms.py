@@ -8,10 +8,15 @@ class SectionForm(forms.ModelForm):
 
 class ClassForm(forms.ModelForm):
     """Model Form to handle class"""
+    section = forms.ModelMultipleChoiceField(
+        queryset=Section.objects.none(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True)
     class Meta:
         model = Classes
         fields = ('classes','section')
 
-        widgets = {
-            'section': forms.CheckboxSelectMultiple()
-        }
+    def __init__(self, *args, **kwargs):
+        self.school = kwargs.pop("school")
+        super(ClassForm, self).__init__(*args, **kwargs)
+        self.fields["section"].queryset = self.school.section_set.all()

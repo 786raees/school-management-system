@@ -72,15 +72,15 @@ def delete_section(request, pk):
 def create_class(request):
     requested_user_school = request.user.selectedschool.school if request.user.user_type == 'super admin' else request.user.school
     object_list = Classes.objects.filter(school=requested_user_school)
-    form = ClassForm()
+    form = ClassForm( school=requested_user_school)
     if request.method == 'POST':
-        form = ClassForm(request.POST)
+        form = ClassForm(request.POST, school=requested_user_school)
     
         if form.is_valid():
             obj = form.save(commit=False)
             obj.school = requested_user_school
             obj.save()
-            form = ClassForm()
+            form = ClassForm( school=requested_user_school)
             messages.success(request, f'"{obj.school}" Class has been added successfully')
         else:
             messages.warning(request, 'Class has been added unsuccessfully')
@@ -98,9 +98,9 @@ def update_class(request, pk):
     requested_user_school = request.user.selectedschool.school if request.user.user_type == 'super admin' else request.user.school
     object_list = Classes.objects.filter(school=requested_user_school)
     _object = Classes.objects.get(id=pk, school=requested_user_school)
-    form = ClassForm(instance=_object)
+    form = ClassForm(instance=_object, school=requested_user_school)
     if request.method == 'POST':
-        form = ClassForm(request.POST, instance=_object)
+        form = ClassForm(request.POST, instance=_object, school=requested_user_school)
         if form.is_valid():
             obj = form.save(commit=False)
             obj.school = requested_user_school
