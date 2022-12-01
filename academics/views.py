@@ -105,6 +105,7 @@ def update_class(request, pk):
             obj = form.save(commit=False)
             obj.school = requested_user_school
             obj.save()
+            form.save_m2m()
             messages.success(request, f'"{obj.school}" Class has been updated successfully')
             return redirect('academics:create_class')
         else:
