@@ -80,6 +80,7 @@ def create_class(request):
             obj = form.save(commit=False)
             obj.school = requested_user_school
             obj.save()
+            form.save_m2m()
             form = ClassForm( school=requested_user_school)
             messages.success(request, f'"{obj.school}" Class has been added successfully')
         else:
