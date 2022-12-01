@@ -86,7 +86,7 @@ def create_class(request):
             messages.warning(request, 'Class has been added unsuccessfully')
         
     context = {
-        # 'object_list': SectionTable(object_list),
+        'object_list': object_list,
         'form': form,
         'page_name': 'Class',
         'app_name': 'Academics',
@@ -111,7 +111,7 @@ def update_class(request, pk):
             messages.warning(request, 'Class has been updated unsuccessfully')
             
     context = {
-        # 'object_list': SectionTable(object_list),
+        'object_list': object_list,
         'form': form,
         'page_name': 'Class',
         'app_name': 'Academics',
