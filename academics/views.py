@@ -65,9 +65,6 @@ def delete_section(request, pk):
     
     return redirect('academics:create_section')
 
-<<<<<<< HEAD
-# TODO: CRUD for classes
-=======
 # CRUD for Classes
 
 def create_class(request):
@@ -132,4 +129,3 @@ def delete_class(request, pk):
         messages.warning(request, 'Class has been deleted unsuccessfully')
     
     return redirect('academics:create_class')
->>>>>>> class_crud

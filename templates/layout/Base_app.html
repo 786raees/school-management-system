@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
     {% compress css %}
+    <link href="{% static 'assets/css/pages/login/login-1.css' %}" rel="stylesheet" type="text/css" />
     <link href="{% static 'assets/plugins/custom/fullcalendar/fullcalendar.bundle.css' %}" rel="stylesheet"
         type="text/css" />
     <link href="{% static 'assets/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css" />
@@ -42,6 +43,9 @@
 <body id="kt_body"
     class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
 
+{% block body %}
+    
+    
     <!--begin::Main-->
     <!--begin::Header Mobile-->
     <div id="kt_header_mobile" class="header-mobile align-items-center  header-mobile-fixed ">
@@ -143,6 +147,7 @@
     </div>
     <!--end::Main-->
 
+{% endblock body %}
     
     {% include 'components\OffCanvas\UserPanel\UserPanel.html' %}
     {% include 'components\OffCanvas\QuickCart\QuickCart.html' %}
@@ -222,9 +227,9 @@
     <script src="{% static 'assets/plugins/custom/fullcalendar/fullcalendar.bundle.js' %}"></script>
     <script src="{% static 'assets/plugins/custom/gmaps/gmaps.js' %}"></script>
     
-    {% endcompress %}
-    {% compress js %}
     <script src="{% static 'assets/js/pages/widgets.js' %}"></script>
+    <script src="{% static 'assets/js/pages/custom/login/login-general.js' %}"></script>
+
     {% endcompress %}
     {% block extra_js %}
         

@@ -8,6 +8,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path("select2/", include("django_select2.urls")),
     path('configurations/', include('configurations.urls')),
+    path('auth/', include('users.urls')),
     path('academics/', include('academics.urls')),
 ]
 

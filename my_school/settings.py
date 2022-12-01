@@ -44,6 +44,8 @@ THIRD_PARTY_APPS = [
     'import_export',
     'croppie',
     'django_filters',
+    'widget_tweaks',
+
 ]
 
 USER_INSTALLED_APPS = [
