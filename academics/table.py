@@ -24,5 +24,6 @@ class SectionTable(table.Table):
         template_name = "django_tables2/bootstrap-responsive.html"
 
         exclude = (
+            "id",
             "school",
         )

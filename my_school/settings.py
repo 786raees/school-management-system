@@ -76,7 +76,7 @@ AUTHENTICATION_BACKENDS = [
 # }
 
 
-LOGIN_URL = 'admin:login'
+LOGIN_URL = 'account_login'
 
 
 
