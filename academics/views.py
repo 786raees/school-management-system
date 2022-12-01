@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Section,Classes
 from .forms import SectionForm,ClassForm
-from .table import SectionTable
+from .table import SectionTable,ClassTable
 
 def create_section(request):
     requested_user_school = request.user.selectedschool.school if request.user.user_type == 'super admin' else request.user.school
@@ -86,7 +86,7 @@ def create_class(request):
             messages.warning(request, 'Class has been added unsuccessfully')
         
     context = {
-        'object_list': object_list,
+        'object_list': ClassTable(object_list),
         'form': form,
         'page_name': 'Class',
         'app_name': 'Academics',
@@ -111,7 +111,7 @@ def update_class(request, pk):
             messages.warning(request, 'Class has been updated unsuccessfully')
             
     context = {
-        'object_list': object_list,
+        'object_list': ClassTable(object_list),
         'form': form,
         'page_name': 'Class',
         'app_name': 'Academics',
