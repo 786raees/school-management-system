@@ -65,9 +65,7 @@ def delete_section(request, pk):
     
     return redirect('academics:create_section')
 
-
 # CRUD for Classes
-
 
 def create_class(request):
     requested_user_school = request.user.selectedschool.school if request.user.user_type == 'super admin' else request.user.school
