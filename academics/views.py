@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Section
-from .forms import SectionForm
-from .table import SectionTable
+from .models import Section,Classes
+from .forms import SectionForm,ClassForm
+from .table import SectionTable,ClassTable
 
 def create_section(request):
     requested_user_school = request.user.selectedschool.school if request.user.user_type == 'super admin' else request.user.school
@@ -65,4 +65,71 @@ def delete_section(request, pk):
     
     return redirect('academics:create_section')
 
+<<<<<<< HEAD
 # TODO: CRUD for classes
+=======
+# CRUD for Classes
+
+def create_class(request):
+    requested_user_school = request.user.selectedschool.school if request.user.user_type == 'super admin' else request.user.school
+    object_list = Classes.objects.filter(school=requested_user_school)
+    form = ClassForm( school=requested_user_school)
+    if request.method == 'POST':
+        form = ClassForm(request.POST, school=requested_user_school)
+    
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.school = requested_user_school
+            obj.save()
+            form.save_m2m()
+            form = ClassForm( school=requested_user_school)
+            messages.success(request, f'"{obj.school}" Class has been added successfully')
+        else:
+            messages.warning(request, 'Class has been added unsuccessfully')
+        
+    context = {
+        'object_list': ClassTable(object_list),
+        'form': form,
+        'page_name': 'Class',
+        'app_name': 'Academics',
+    }
+
+    return render(request, 'pages/academics/class.html', context)
+
+def update_class(request, pk):
+    requested_user_school = request.user.selectedschool.school if request.user.user_type == 'super admin' else request.user.school
+    object_list = Classes.objects.filter(school=requested_user_school)
+    _object = Classes.objects.get(id=pk, school=requested_user_school)
+    form = ClassForm(instance=_object, school=requested_user_school)
+    if request.method == 'POST':
+        form = ClassForm(request.POST, instance=_object, school=requested_user_school)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.school = requested_user_school
+            obj.save()
+            form.save_m2m()
+            messages.success(request, f'"{obj.school}" Class has been updated successfully')
+            return redirect('academics:create_class')
+        else:
+            messages.warning(request, 'Class has been updated unsuccessfully')
+            
+    context = {
+        'object_list': ClassTable(object_list),
+        'form': form,
+        'page_name': 'Class',
+        'app_name': 'Academics',
+    }
+
+    return render(request, 'pages/academics/class.html', context)
+
+def delete_class(request, pk):
+    requested_user_school = request.user.selectedschool.school if request.user.user_type == 'super admin' else request.user.school
+    try:
+        _object = Classes.objects.get(id=pk, school=requested_user_school)
+        _object.delete()
+        messages.success(request, f'"{_object.school}" Class has been deleted successfully')
+    except Classes.DoesNotExist:
+        messages.warning(request, 'Class has been deleted unsuccessfully')
+    
+    return redirect('academics:create_class')
+>>>>>>> class_crud

@@ -37,7 +37,7 @@ THIRD_PARTY_APPS = [
     'django_tables2', # https://django-tables2.readthedocs.io/en/latest/
     'sweetify', # https://github.com/Atrox/sweetify-django
     'slippers', # https://mitchel.me/slippers/docs/introduction/
-    'debug_toolbar', # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html
+    'debug_toolbar',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -78,9 +78,6 @@ AUTHENTICATION_BACKENDS = [
 
 LOGIN_URL = 'account_login'
 
-# INTERNAL_IPS = [
-#     "127.0.0.1",
-# ]
 
 
 MIDDLEWARE = [
