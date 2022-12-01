@@ -65,3 +65,4 @@ def delete_section(request, pk):
     
     return redirect('academics:create_section')
 
+# TODO: CRUD for classes
